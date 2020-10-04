@@ -1,0 +1,13 @@
+
+  .NameC{
+    animation: animation-name .3s ease-out forwards;
+  }
+@keyframes animation-name {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+
