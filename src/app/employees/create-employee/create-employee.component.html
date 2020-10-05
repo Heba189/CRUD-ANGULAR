@@ -1,4 +1,4 @@
-<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
+<form ngNativeValidate  #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
   <div class="card">
     <div class="card-header">
       <h3 class="panel-title">Create Employee</h3>
@@ -87,10 +87,55 @@
           </label>
         </div>
       </div>
+
+     <div class="form-group">
+       <label for="department">department</label>
+       <select name="department" id="department" [(ngModel)]="employee.department" class="form-control">
+        <option *ngFor="let dept of departments" [value]="dept.id">
+          {{dept.name}}
+        </option>
+       
+       </select>
+     </div>
+     <div class="form-group">
+       <label for="DBirth"> Date Of Birth</label>    
+        <input [bsConfig]="BsDatepickerConfig" type="text"
+               placeholder="Datepicker"
+               class="form-control"
+               bsDatepicker>     
+    </div>
+      </div>
+      <div class="form-group">
+        
+        <div class="form-control">
+          <label class="checkbox-inline px-2">
+            <input
+              [(ngModel)]="employee.isActive"
+              type="checkbox"
+              
+              name="isActive"
+              checked
+            />
+            Is Active
+          </label>
+       
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="photoPath">Photo Path</label>
+        <input type="text" class="form-control" id="photoPath" name="photoPath" [(ngModel)]="employee.photoPath" >
+      </div>
+      <div class="form-group">
+        <button type="button" (click)="TogglePhotoPreview()" class="btn btn-primary">{{ previewPhoto? "Hide ":"Show "  }}Preview</button>
+      </div>
+      <div class="form-group">
+        <img *ngIf="previewPhoto" [src]="employee.photoPath" alt="" srcset="">
+      </div>
+
     </div>
     <div class="card-footer">
-      <button class="btn btn-primary d-flex ml-auto" type="submit">Save</button>
+      <button class="btn btn-primary d-flex ml-auto" type="submit" checked>Save</button>
     </div>
-  </div>
+  
 </form>
 Angular Generated Forom Model : {{ employeeForm.value | json }}
