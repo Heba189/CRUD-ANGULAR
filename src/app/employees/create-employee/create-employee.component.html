@@ -1,29 +1,96 @@
-    <form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
-    <div class="card">
-  <div class="card-header">
-    <h3 class="panel-title">Create Employee</h3>
-  </div>
-  <div class="card-body">
-
-
+<form #employeeForm="ngForm" (ngSubmit)="saveEmployee(employeeForm)">
+  <div class="card">
+    <div class="card-header">
+      <h3 class="panel-title">Create Employee</h3>
+    </div>
+    <div class="card-body">
       <div class="form-group">
         <label for="fullName">Full Name</label>
-        <input id="fullName" type="text" class="form-control"
-           #ref1    name="fullName" [(ngModel)]="ref1.value">
+        <input
+          id="fullName"
+          type="text"
+          class="form-control"
+          #ref1
+          name="fullName"
+          [(ngModel)]="employee.name"
+        />
       </div>
 
       <div class="form-group">
         <label for="email">Email</label>
-        <input id="email" type="text" class="form-control"
-            #ref2   name="email" [(ngModel)]="ref2.value">
+        <input
+          id="email"
+          type="text"
+          class="form-control"
+          #ref2
+          name="email"
+          [(ngModel)]="employee.email"
+        />
       </div>
 
- 
-  </div>
-  <div class="card-footer">
-    <button class="btn btn-primary d-flex ml-auto" type="submit">Save</button>
-  </div>
-</div>
-   </form>
-Angular Generated Forom Model : {{employeeForm.value | json}}
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input
+          class="form-control"
+          type="text"
+          name="phoneNumber"
+          [(ngModel)]="employee.phoneNumber"
+          id="phoneNumber"
+        />
+      </div>
 
+      <div class="form-group">
+        <label> ContactPreference</label>
+        <div class="form-control">
+          <label class="radio-inline px-2">
+            <input
+              [(ngModel)]="employee.contactPreference"
+              type="radio"
+              value="phone"
+              name="ContactPreference"
+              checked
+            />
+            Phone
+          </label>
+          <label class="radio-inline px-2">
+            <input
+              [(ngModel)]="employee.contactPreference"
+              type="radio"
+              value="email"
+              name="ContactPreference"
+            />
+            Email
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label> Gender</label>
+        <div class="form-control">
+          <label class="radio-inline px-2">
+            <input
+              [(ngModel)]="employee.gender"
+              type="radio"
+              value="male"
+              name="gender"
+              checked
+            />
+            Male
+          </label>
+          <label class="radio-inline px-2">
+            <input
+              [(ngModel)]="employee.gender"
+              type="radio"
+              value="female"
+              name="gender"
+            />
+            Female
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <button class="btn btn-primary d-flex ml-auto" type="submit">Save</button>
+    </div>
+  </div>
+</form>
+Angular Generated Forom Model : {{ employeeForm.value | json }}
